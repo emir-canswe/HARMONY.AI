@@ -19,7 +19,7 @@ mp_draw = mp.solutions.drawing_utils  # Ekrana el iskeletini çizdirmek için
 
 # Eğitim verisi ve etiketlerini tutan listeler
 sample_data = []  # El pozisyon verileri
-sample_labels = []  # El hareketlerinin etiketleri (hello, help, water gibi)
+sample_labels = []  # El hareketlerinin etiketleri (hello, help, water gibi
 
 # Kayıt modunda her bir pozisyonu listeye ekleyen fonksiyon
 def add_sample(landmarks, label):  # landmarks: el noktaları, label: hareket etiketi
