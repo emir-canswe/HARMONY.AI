@@ -105,4 +105,4 @@ while True:
 
 # Döngüden çıkınca her şeyi kapat
 cap.release()  # Kamerayı kapat
-cv2.destroyAllWindows()  # Açık pencereleri kapat
+cv2.destroyAllWindows()  # Açık pencereleri kapa
