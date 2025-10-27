@@ -7,7 +7,6 @@ from playsound import playsound
 import os
 import time
 
-# ✅ Yeni Mediapipe Import Yapısı
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
@@ -64,52 +63,17 @@ print("[q] Çıkış")
 while True:
     ret, frame = cap.read()
     if not ret:
-<<<<<<< HEAD
-=======
-        break  # Kamera görüntü vermiyorsa çık
-
-    frame = cv2.flip(frame, 1)  # Aynalı görüntü (kullanıcı gibi görünür)
-    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)  # BGR → RGB çevir (mediapipe için)
-    results = hands.process(rgb)  # El tespiti yap
-
-    # Eğer bir el algılandıysa
-    if results.multi_hand_landmarks:
-        for hand_landmarks in results.multi_hand_landmarks:
-            mp_draw.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)  # El iskeletini çiz
-
-            # Kayıt modu açıksa ve bir tuş atanmışsa veri topla
-            if recording and gesture_key:
-                add_sample(hand_landmarks.landmark, gesture_key)  # Pozisyonu kaydet
-                cv2.putText(frame, f"Kaydedildi: {gesture_key}", (10, 50),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)  # Ekrana yazı yaz
-
-            # Eğer model eğitildiyse hareket tahmini yap
-            if trained:
-                prediction = predict(hand_landmarks.landmark)  # Hareketi tahmin et
-                cv2.putText(frame, f"Tespit: {prediction}", (10, 100),
-                            cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)  # Ekrana göster
-                
-                # Aynı kelime tekrar tekrar söylenmesin diye kontrol
-                if prediction != last_prediction or (time.time() - last_time_spoken > 3):
-                    speak(prediction)  # Tahmini seslendir
-                    last_prediction = prediction  # Son tahmini güncelle
-                    last_time_spoken = time.time()  # Konuşma zamanını güncelle
-
-    # Klavyeden tuş kontrolüs
-    key = cv2.waitKey(1) & 0xFF  # Tuşa basıldı mı?
-    if key == ord('q'):  # Çıkış için
->>>>>>> c3091542b28cf5e002cd459fcbefd5a86159dcfa
         break
 
     frame = cv2.flip(frame, 1)
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-<<<<<<< HEAD
     mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=rgb)
     results = hands.detect(mp_image)
 
     if results.hand_landmarks:
         for hand in results.hand_landmarks:
+
             for lm in hand:
                 cx, cy = int(lm.x * frame.shape[1]), int(lm.y * frame.shape[0])
                 cv2.circle(frame, (cx, cy), 5, (0,255,0), -1)
@@ -146,10 +110,3 @@ cap.release()
 cv2.destroyAllWindows()
 print("✅ Program sonlandırıldı")
 print("emirooooadknadjvbdsjhbvo")
-=======
-# Döngüden çıkınca her şeyi kapat
-cap.release()  # Kamerayı kapat
-
-cv2.destroyAllWindows()  # Açık pencereleri kapa
-
->>>>>>> c3091542b28cf5e002cd459fcbefd5a86159dcfa
