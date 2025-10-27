@@ -87,7 +87,7 @@ while True:
                     last_prediction = prediction  # Son tahmini güncelle
                     last_time_spoken = time.time()  # Konuşma zamanını güncelle
 
-    # Klavyeden tuş kontrolü
+    # Klavyeden tuş kontrolüs
     key = cv2.waitKey(1) & 0xFF  # Tuşa basıldı mı?
     if key == ord('q'):  # Çıkış için
         break
